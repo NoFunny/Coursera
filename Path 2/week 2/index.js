@@ -14,20 +14,22 @@ Collection.prototype.values = function () {
     return this.value;
 };
 
-Collection.prototype.append = function (array) {
-    if(array) {
-      if(Array.isArray(array)) {
-        this.valut = this.value.concat(array);
-      }else if(array instanceof Collection) {
-        this.value = this.value.concat(Collection.prototype.values.call(array));
-      }else this.value.push(array);
-    }
+Collection.prototype.append = function () {
+ if (!(arguments.length === 0)){
+   for (var i = 0; i < arguments.length; i++) {
+     if (Array.isArray(arguments[i])){
+       this.value = this.value.concat(arguments[i]);
+     } else if (arguments[i] instanceof Collection) {
+       this.value = this.value.concat(Collection.prototype.values.call(arguments[i]));
+     } else this.value.push(arguments[i]);
+   }
+ }
 };
 
 Collection.prototype.count = function () {
   if(this.value.length > 0) {
     return this.value.length;
-  }else {
+  }else{
     return 0;
   }
 };
@@ -59,7 +61,7 @@ Collection.from = function (array) {
     var collection = new Collection;
 
     if(array[0] instanceof Collection) {
-      collection.value = collection.value.concat(Collection.prototype.value.call(array));
+      collection.value = collection.value.concat(Collection.prototype.values.call(array));
     }
     if((Array.isArray(array[0])) && (array.length === 1) ) {
       collection.value = collection.value.concat(array[0]);
