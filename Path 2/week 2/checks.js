@@ -12,7 +12,6 @@ assert.deepEqual(numbers.values(), [10, 20]);
 
 // Создаем коллекцию букв
 var letters = Collection.from(['a', 'b', 'c']);
-// letters.values();
 letters.append('d');
 
 assert.equal(letters.count(), 4);
@@ -34,7 +33,6 @@ assert.equal(items.at(1), 10);
 assert.equal(items.at(3), 'a');
 assert.equal(items.at(6), 'd');
 
-items.values();
 // Проверяем удаление
 assert.equal(items.removeAt(0), false);
 assert.equal(items.removeAt(2), true);
