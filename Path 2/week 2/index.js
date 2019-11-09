@@ -20,7 +20,6 @@ Collection.prototype.append = function (array) {
         this.valut = this.value.concat(array);
       }else if(array instanceof Collection) {
         this.value = this.value.concat(Collection.prototype.values.call(array));
-        console.log(array);
       }else this.value.push(array);
     }
 };
