@@ -5,7 +5,7 @@
 module.exports = function (operations, callback) {
     var promises = [];
     for (var i = 0; i < operations.length; i++) {
-        var operation = operations[i];
+        var operation  = operations[i];
         var prom = new Promise(function (resolve, reject) {
             operation(function callback(err, data) {
                 if (err)
